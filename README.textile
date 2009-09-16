@@ -1,0 +1,20 @@
+h1. web-fs
+web file system
+
+h1. Installing appengine-jruby
+
+<code>gem install google-appengine</code>
+
+h1. Installing Gems for your App
+
+<code>
+appcfg.rb gem sources --add http://gems.datamapper.org
+appcfg.rb gem install sinatra dm-appengine addressable appengine-apis extlib maruku rack syntax
+</code>
+
+h1. Running
+
+<code>
+cd web-fs
+dev_appserver.rb .
+</code>

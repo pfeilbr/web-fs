@@ -1,0 +1,34 @@
+<html>
+	<head>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+		<script type="text/javascript">
+		
+		$(function() {
+
+			$('#send').click(function() {
+				var action = '/<%= FS_PREFIX %>' + $('#path').val() + '/' + $('#file').val();
+				$('#upload_form').attr('action', action);
+				$('#upload_form').submit();
+			});
+
+		});
+		
+		</script>
+	</head>
+	<body>
+		<form id='upload_form' action="" enctype="multipart/form-data" method="post">
+			<p>
+				Path: <input id='path' type='text' size='40'><br/>
+				File: <input id='file' type="file" name="datafile" size="40"><br/>
+				<input id='send' type="button" value="upload">
+			</p>
+		</form>
+		<div>
+			<hr />
+			<h3>Files</h3>
+			<% @files.each do |file| %>
+				<a href="/<%= FS_PREFIX %>/<%= file[:path] %>"><%= file[:path] %></a><br/>
+			<% end %>
+		</div>
+	</body>
+</html>
