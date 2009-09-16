@@ -19,3 +19,13 @@ h1. Running
 cd web-fs
 dev_appserver.rb .
 </pre>
+
+h1. Debugging
+
+You can debug the app using irb (jruby irb)
+
+<pre>
+cd web-fs
+appcfg.rb run -S irb
+>> require 'app'
+</pre>
