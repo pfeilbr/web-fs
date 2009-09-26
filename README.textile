@@ -10,7 +10,8 @@ h1. Installing Gems for your App
 
 <pre>
 appcfg.rb gem sources --add http://gems.datamapper.org
-appcfg.rb gem install sinatra dm-appengine addressable appengine-apis extlib maruku rack syntax
+appcfg.rb gem install sinatra dm-appengine addressable appengine-apis extlib maruku rack syntax json_pure rest-client mime-types
+appcfg.rb gem cleanup
 </pre>
 
 h1. Running

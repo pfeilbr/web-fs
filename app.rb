@@ -1,3 +1,4 @@
+# appcfg.rb gem install 
 require 'rubygems'
 require 'sinatra'
 require 'dm-core'
@@ -5,6 +6,12 @@ require 'appengine-apis/datastore'
 require 'json'
 require 'mime/types'
 require 'base64'
+require 'open-uri'
+#require 'rest_client'
+
+require 'appengine-apis/urlfetch'
+Net::HTTP = AppEngine::URLFetch::HTTP
+
 
 class Sinatra::Reloader < Rack::Reloader
   def safe_load(file, mtime, stderr = $stderr)
@@ -46,6 +53,10 @@ end
 helpers do
   include Rack::Utils
   alias_method :h, :escape_html
+end
+
+get '/url' do
+  open('http://google.com')
 end
 
 get '/' do
