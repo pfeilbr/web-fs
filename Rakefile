@@ -1,14 +1,22 @@
-GEMS = %w(sinatra dm-appengine addressable appengine-apis extlib maruku rack syntax json_pure rest-client mime-types)
-task :rebuild => [:clean] do
-  sh "rm -fr .gems"
-  sh "appcfg.rb gem install #{GEMS.join(' ')}"
-  sh "appcfg.rb gem cleanup"
-end
+GEMS = %w(sinatra dm-appengine addressable appengine-apis extlib maruku rack syntax json_pure mime-types)
 
-task :build => [:clean] do
-  sh "appcfg.rb gem cleanup"
-end
+namespace :gem do
 
-task :clean do
-  sh "rm -fr WEB-INF/lib/gems.jar"
+  desc "reinstalls all gems for the project"
+  task :reinstall => [:clean] do
+    sh "rm -fr .gems"
+    sh "gem bundle"
+    sh "appcfg.rb bundle ."
+  end
+
+  desc "builds WEB-INF/lib/gems.jar"
+  task :build => [:clean] do
+    sh "appcfg.rb bundle ."
+  end
+
+  desc "removes WEB-INF/lib/gems.jar"
+  task :clean do
+    sh "rm -fr WEB-INF/lib/gems.jar"
+  end
+
 end

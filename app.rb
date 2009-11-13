@@ -7,7 +7,6 @@ require 'json'
 require 'mime/types'
 require 'base64'
 require 'open-uri'
-#require 'rest_client'
 
 require 'appengine-apis/urlfetch'
 Net::HTTP = AppEngine::URLFetch::HTTP
@@ -55,8 +54,8 @@ helpers do
   alias_method :h, :escape_html
 end
 
-get '/url' do
-  open('http://google.com')
+get '/proxy/*' do
+  CLIENT.get_content(params[:splat].first)
 end
 
 get '/' do
